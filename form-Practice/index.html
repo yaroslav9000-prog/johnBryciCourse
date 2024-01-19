@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <form id="form-container">
+        <!--First name input field-->
+        <label for="firstName">Enter your first name:</label>
+        <input id="firstName" name="firstName" type="text" required><br>
+        <!--Second name input field-->
+        <label for="secondName">Enter your second name.</label>
+        <input id="secondName" name="secondName" type="text" required><br>
+        <!--date input field-->
+        <label for="date">Enter a date</label>
+        <input id="date" name="date" type="date" required><br>
+        <!--image selector tags-->
+        <label for="userPic">Enter your picture url</label>
+        <input id="userPic" type="url"><br>
+        <!--radio selector section-->
+        <input type="radio" id="male" value="male" name="gender">
+        <label for="male">male</label><br>
+        <!--Second radio input field-->
+        <input type="radio" id="female" value="female" name="gender">
+        <label for="female">female</label><br>
+        <!--Third input field for shaky lads-->
+        <input type="radio" id="unsure" value="unsure" name="gender">
+        <label for="unsure">I still dont know</label><br>
+        <input type="button" value="Submit" id="btnSubmit" onclick="tralala()">
+        <button type="reset" onclick="clear()">clear all</button>
+        <hr>
+    </form>
+    <table id="table-form">
+
+    </table>
+</body>
+</html>

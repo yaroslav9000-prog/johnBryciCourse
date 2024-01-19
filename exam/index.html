@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping List</title>
+    <script defer src="script.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="form-container">
+    <h1>Form for adding some product</h1>
+    <form action="javascript:addProduct()" id="myForm">
+        <input id="productName"  name ="name" type="text" placeholder="write product's name" required/><br>
+        <input id="productPrice" name="price" type="number" placeholder="write product's price" required/><br>
+        <input id="catName" name="category" type="text" placeholder="write category of product" required/><br>
+        <input id="productPic" name="picture" type="url" placeholder="enter your product picture" required/><br>
+        <input type="submit" value="Add Product">
+        <hr>
+    </form>
+</div>
+    <h1>My Cart</h1>    
+    <table id="myCart" >
+        
+    </table>
+
+</body>
+</html>

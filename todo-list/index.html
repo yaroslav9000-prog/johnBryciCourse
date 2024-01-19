@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do list</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="myCode.js" defer></script>
+    <style>
+        body{
+            text-align: center;
+        }
+        input{
+            margin: 5px;
+        }
+        ul{
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="line">hahaha</h1>
+    <input id="taskName" type="text" placeholder="enter your task">
+    <input id="taskDate" type="date">
+    <button onclick="addTask()">submit</button><br>
+    <button onclick="clearTasks()">Clear all list</button>
+    <div id="listContainer"></div>
+</body>
+</html>

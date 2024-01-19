@@ -1,0 +1,38 @@
+body{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    /*
+    animation-name: move;
+    animation-duration: 5s;
+    */
+}
+div{
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation-name: move01;
+    animation-duration: 5s;
+}
+@keyframes move01{
+    0%{left: 0; top: 0;}
+    25%{left: 1000px; top: 0;}
+    50%{left: 1000px; top: 400px}
+    75%{left: 0; top: 400px;}
+    100%{left: 0; top: 0;}
+}
+/* trying position:absolute top: 2px to move postion: absolute top: 100px*/
+/*
+@keyframes{
+    0% {}
+}
+*/
+/*
+@keyframes move{
+    0% {justify-content: flex-start; align-items: flex-start;}
+    25% {justify-content: flex-end; align-items: start;}
+    50%{ justify-content: end; align-items: end;}
+    75% {justify-content: start; align-items: end;}
+    100%{justify-content: start; align-items: start;}
+}
+*/
