@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <style>
+        
+        div{
+            top: 0px;
+            left: 0px;
+            width: 150px;
+            height: 150px;
+            position:absolute;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        $(function(){
+            $('div').animate({"left": '1125px', "background-color":"rgb(255,160,122)"}, 2000)
+            .animate({"top":'390px'}, 2000)
+            .animate({"left":"0px"}, 2000)
+            .animate({"top":"0px"},2000);
+        })
+    </script>
+</body>
+</html>

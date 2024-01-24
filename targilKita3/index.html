@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark mode page</title>
+    <style>
+        *{
+            text-align: center;
+        }
+        .dark-mode{
+            color: whitesmoke;
+            background-color: black;
+            
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script defer>
+        $(()=>{
+            $("input").click( ()=>{
+                $("body").toggleClass("dark-mode");
+            })
+        })
+    </script>
+    
+</head>
+<body>
+    <h1>Hello there</h1>
+    <input type="button" value="toggle">
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque reiciendis magnam tempora! Molestias dolor officiis animi, sint molestiae, at quos dolore aperiam, error cumque ullam soluta expedita optio quas. Voluptates.</p>    
+</body>
+</html>
