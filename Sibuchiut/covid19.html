@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>covid19</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <table id="corona-results">
+        <thead>
+        <tr>
+        <th>City</th>
+        <th>Number of streets</th>
+        </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+
+
+
+
+    <script>
+        $(()=>{
+            let streets = "https://data.gov.il/api/3/action/datastore_search?resource_id=9ad3862c-8391-4b2f-84a4-2d4c68625f4b&q=";
+            $.get(streets,(data)=>{
+                let searchResults = data.result.records;
+                let searchNumber = 1000;
+                let result = '';
+                let newObj = new Object();
+            for(let index=0; index < searchNumber; index++){
+                console.log(searchResults[index]["שם_ישוב"]);
+                
+                
+                
+                                
+             }
+             
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            text-align: center;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    
+</head>
+
+<body>
+    <form action="">
+        <input type="text" placeholder="input the city">
+        <input type="submit" value="submit">
+    </form>
+    <table border="1" cellspacing="collapse">
+            <tr>
+                <td>Neighborhood</td>
+                <td>Long</td>
+                <td>Lat</td>
+            </tr>
+        
+
+    
+    </table>
+    <script>
+        const apiData = "https://data.gov.il/api/3/action/datastore_search?resource_id=e873e6a2-66c1-494f-a677-f5e77348edb0&q=";
+        const count = 500;
+        const someCity = "קריית מוצקין";
+        $.get(apiData,(data)=>{
+            let showResult = data.result.records;
+            console.log(someCity);
+            let newObj = new Object();
+            let myArray = [];
+            // for(let index = 0; index < showResult.length; index++){
+            //     if(showResult[index].CityName === someCity){
+            //         if(newObj[`${showResult[index].Neighborhood}`] === undefined){
+            //             newObj[`${showResult[index].Neighborhood}`] = [];
+            //             newObj[`${showResult[index].Neighborhood}`].push([showResult[index].Lat, showResult[index].Long]);
+                        
+            //         }else{
+            //             newObj[`${showResult[index].Neighborhood}`].push([showResult[index].Lat, showResult[index].Long]);
+            //         }
+            //     }
+            // }
+          // [['neighborhood', Lat, Long],['neighborhood', Lat, Long],['neighborhood', Lat, Long]]
+          //
+          for(let index = 0; index < showResult.length; index++){
+                if(showResult[index].CityName === someCity){
+                    myArray.push([showResult[index].Neighborhood, showResult[index].Lat, showResult[index].Long]);
+                }
+            }
+            console.log(myArray);
+            myArray.forEach(element=>{
+                $('table').append(`<tr><td>${element[0]}</td><td>${element[1]}</td><td>${element[2]}</td></tr>`);
+            })
+        })
+
+    </script>
+</body>
+</html>
