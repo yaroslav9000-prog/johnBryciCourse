@@ -3,9 +3,9 @@ class Person{
     private age: number;
     private birthYear: number;
 
-    constructor(someName:String, someAge:number){
-        this.name = someName;
-        this.age = someAge;
+    constructor(name:String, age:number){
+        this.name = name;
+        this.age = age;
         this.birthYear=0;
     }
     private getYear():number{
