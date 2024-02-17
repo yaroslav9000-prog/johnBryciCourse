@@ -38,15 +38,15 @@ class Bank{
         }
         else{console.log("Name Cant be shorter than 2 character.");}
     }
-    public addNewClient(){
-
+    public addNewClient(name:String, id:String, typeOfClient: String){
+        const newClient = new Client(name, id, typeOfClient);
+        newClient
     }
 }
 class Client{    
     private _name!: String;
     private _id!: String;
     private _typeOfClient!: String;
-    private _totalMoney: number;
     private _accountsList!: Account[];
     private _totalAccounts!: number;
 
@@ -54,7 +54,7 @@ class Client{
         this.setName = name;
         this.setClientId = id;
         this.setClientType = clientType;
-        this._totalMoney = 0;
+        
         
     }
     set setName(value: String){
@@ -86,9 +86,29 @@ class Client{
             this._id = value;
         }
     }
+    public addAccount(){
+
+    }
 
 
 }
 class Account{
+    private _nodeId !: number;
+    private _clientId!: String;
+    private _totalMoney: number =0;
 
+    constructor(nodeId: number, clientId: string){
+        this._nodeId = nodeId;
+        this._clientId = clientId;
+    }
+    public deposit(value:number){
+        if(value > 0){
+            this._totalMoney += value;
+        }
+    }
+    public withdraw(value: number){
+        if(value > 0){
+            this._totalMoney -= value;
+        }
+    }    
 }
