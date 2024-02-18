@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>תחנות דלק</title>
+    <style>
+      * {
+        text-align: center;
+      }
+      table {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid black;
+      }
+    </style>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <h1>תחנות דלק</h1>
+    <form action="javascript:">
+      <input
+        id="form-text"
+        type="text"
+        placeholder="תחנות דלק באיזה עיר תרצה לראות?"
+        required
+      /><br /><br />
+      <input id="form-submit" type="button" value="submit" />
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>חברה</th>
+          <th>מס תחנות</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <script>
+      const myURL =
+        "https://data.gov.il/api/3/action/datastore_search?resource_id=ff3b653c-d268-4eb7-a86b-6de69e77043a&limit=";
+
+      $(() => {
+        $("#form-submit").on("click", () => {
+          const myValue = $("#form-text").val();
+          const newObj = new Object();
+
+          $.get(myURL, (data) => {
+            const result = data.result.records;
+            for (item in result) {
+              if (newObj[result[item].company] === undefined) {
+                newObj[result[item].company] = 1;
+              } else {
+                newObj[result[item].company]++;
+              }
+            }
+            /////////////////////////////////////
+            for (item in newObj) {
+              $("tbody").append(
+                `<tr><td>${item}</td><td>${newObj[item]}</td></tr>`
+              );
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
