@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./script.js" defer></script>
+    <style>
+      * {
+        text-align: center;
+      }
+      #tablesDiv > * {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      table,
+      td,
+      th {
+        border: 1px black solid;
+      }
+      #tablesDiv {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="script">
+      <h1>חיפוש מדינות</h1>
+      <label for="all">All countries</label>
+      <input type="button" id="all" value="show" /><br /><br />
+      <label for="searchByName">Search by name of the country</label>
+      <input id="searchByName" type="text" placeholder="enter country name" />
+      <input id="searchByNameButton" type="button" value="show" />
+      <hr />
+    </form>
+    <div id="tablesDiv">
+      <p id="someInfo"></p>
+      <table id="statistics">
+        <thead>
+          <th>Country Name</th>
+          <th>Number of Citizens</th>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <table id="countriesPerRegion">
+        <thead>
+          <th>Region</th>
+          <th>Number of Countries</th>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <table id="currencies">
+        <thead>
+          <th>Currency</th>
+          <th>Countries use it</th>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </body>
+</html>
