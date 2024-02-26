@@ -1,48 +1,48 @@
 class Cinema{
     
-    private cinemaName:String ='';
-    private seatNum:number =0;
-    private openHour:number=0;
-    private closeHour:number=0;
+    private _cinemaName:String ='';
+    private _seatNum:number =0;
+    private _openHour:number=0;
+    private _closeHour:number=0;
     
     constructor(cinemaName:String, seatNum:number, openHour:number, closeHour:number){
-        this.setCinemaName =cinemaName;
-        this.setSeatNum = seatNum;
-        this.setOpenHour = openHour;
-        this.setCloseHour = closeHour;
+        this.cinemaName =cinemaName;
+        this.seatNum = seatNum;
+        this.openHour = openHour;
+        this.closeHour = closeHour;
     }
 
-    public set setCinemaName(cinemaName: String){
+    public set cinemaName(cinemaName: String){
         if(cinemaName.length > 0){
-        this.cinemaName = cinemaName;
+        this._cinemaName = cinemaName;
         }
     }
-    public set setSeatNum(seatNum: number){
+    public set seatNum(seatNum: number){
         if(seatNum > 0){
-        this.seatNum = seatNum;
+        this._seatNum = seatNum;
         }
     }
-    public set setOpenHour(openHour: number){
+    public set openHour(openHour: number){
         if(openHour >= 6 && openHour <= 12){
-        this.openHour = openHour;
+        this._openHour = openHour;
         }
     }
-    public set setCloseHour(closeHour: number){
+    public set closeHour(closeHour: number){
         if(closeHour >= 18 && closeHour<= 23 ){
-            this.closeHour = closeHour;
+            this._closeHour = closeHour;
         }
     }
     public get getCinemaName():String{
-        return this.cinemaName;
+        return this._cinemaName;
     }
     public get getSeatNum():number{
-        return this.seatNum;
+        return this._seatNum;
     }
     public get getOpenHour():number{
-        return this.openHour;
+        return this._openHour;
     }
     public get getCloseHour():number{
-        return this.closeHour;
+        return this._closeHour;
     }
     public workingHours():number{
         return this.getCloseHour - this.getOpenHour;
@@ -58,5 +58,5 @@ console.log(shadyCinema.getCloseHour);
 console.log(shadyCinema.getOpenHour);
 console.log(shadyCinema.getSeatNum);
 shadyCinema.print();
-shadyCinema.setSeatNum = 1000;
+shadyCinema.seatNum = 1000;
 console.log(shadyCinema.getSeatNum);
