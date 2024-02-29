@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./index.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <h2 id="id">Some Header</h2>
+    <hr />
+    <script>
+      const headerTag = document.getElementById("id");
+
+      const changeHeader = (n, c) => {
+        const event = new CustomEvent("headerChanged", {
+          detail: { content: n, textColor: c },
+        });
+        headerTag.dispatchEvent(event);
+      };
+
+      headerTag.addEventListener("headerChanged", (e) => {
+        headerTag.innerHTML = e.detail.content;
+        headerTag.style.color = e.detail.textColor;
+      });
+    </script>
+  </body>
+</html>
