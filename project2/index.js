@@ -5,23 +5,19 @@ let aboutPage = `<div class="container-fluid col-xxl-8 px-5 py-5 first-image"><d
 
 
 const checkDigits = (someName)=>{
-    const myReg = new RegExp(/^\d/);
+    const myReg = new RegExp(/(^\W)|(^\d)/);
     return myReg.test(someName);
 }
 
 $(()=>{
     $.get(coinlistURL, (data)=>{
-        let index = 0;
-        while(index < 100){
-            
-            let counter = 0;
-            if(checkDigits(data[counter])){
-                document.dispatchEvent(new CustomEvent('coins:event', {detail: data[counter]}));
-                index+=1;
+        for(let index = 0, counter = 0; index < data.length, counter < 100; index++){
+            if(!checkDigits(data[index].id)){
+                console.log(data[index].id);
+                counter++;
+                console.log(counter);
             }
-            counter+=1;
-            console.log(data[counter]);
-            console.log(`the number is ${index}`);
+            
         }
     
     })
