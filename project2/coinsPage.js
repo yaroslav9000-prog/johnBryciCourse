@@ -18,12 +18,7 @@ const createCard = (someCoin)=>{
     document.getElementById('coinsContainer').innerHTML += cardBody;
 }
 
-document.addEventListener('event:coins',(event)=>{
-    console.log(event.detail);
-    createCard(event.detail);
-    
-    
-})
+
 
 
 
