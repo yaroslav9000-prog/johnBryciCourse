@@ -17,14 +17,14 @@ const checkDigits = (dataList)=>{
     return filteredArray;
 }
 
+
+
 $(()=>{
     $.get(coinlistURL, (data)=>{
+        console.log(data);
         const myFiltList = checkDigits(data);
-        for(let counter = 0; counter < 99; counter++){
-            createCard(myFiltList[counter]);
+        for(let index = 0; index < 100; index++){
+            createCard(myFiltList[index]);
         }
-        // now i should add these ass cards.
-    })
-        
+    })    
 })
-
