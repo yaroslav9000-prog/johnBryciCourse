@@ -88,3 +88,23 @@ html, body{
   .slider.round:before {
     border-radius: 50%;
   }
+  @keyframes example {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  #progressBar {
+    animation-name: example;
+    animation-duration: 1s;
+  }
+  div.progress {
+    height: 10px;
+    width: 400px;
+    
+  }
+  #coinsContainer{
+    width: 100%;
+  }
