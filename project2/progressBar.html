@@ -7,8 +7,21 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
       window.onload = function () {
+        const aaveURL =
+          "https://min-api.cryptocompare.com/data/price?fsym=aave&tsyms=USD";
+        const btcURL =
+          "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD";
+        const ppcURL =
+          "https://min-api.cryptocompare.com/data/price?fsym=ppc&tsyms=USD";
+        const ethURL =
+          "https://min-api.cryptocompare.com/data/price?fsym=eth&tsyms=USD";
+        const ltcURL =
+          "https://min-api.cryptocompare.com/data/price?fsym=ltc&tsyms=USD";
         var dataPoints1 = [];
         var dataPoints2 = [];
+        var dataPoints3 = [];
+        var dataPoints4 = [];
+        var dataPoints5 = [];
         // creates chart object
         var chart = new CanvasJS.Chart("chartContainer", {
           zoomEnabled: true,
@@ -16,7 +29,7 @@
             text: "Coin value in dollars",
           },
           axisX: {
-            title: "chart updates every 3 secs",
+            title: "chart updates every 2 secs",
           },
           axisY: {
             prefix: "$",
@@ -38,7 +51,7 @@
               yValueFormatString: "$####.00",
               xValueFormatString: "hh:mm:ss TT",
               showInLegend: true,
-              name: "Company A",
+              name: "Bitcon",
               dataPoints: dataPoints1,
             },
             {
@@ -46,12 +59,37 @@
               xValueType: "dateTime",
               yValueFormatString: "$####.00",
               showInLegend: true,
-              name: "Company B",
+              name: "aave",
               dataPoints: dataPoints2,
             },
+            {
+              type: "line",
+              xValueType: "dateTime",
+              yValueFormatString: "$####.00",
+              showInLegend: true,
+              name: "ppc",
+              dataPoints: dataPoints3,
+            },
+            {
+              type: "line",
+              xValueType: "dateTime",
+              yValueFormatString: "$####.00",
+              showInLegend: true,
+              name: "etherium",
+              dataPoints: dataPoints4,
+            },
+            {
+              type: "line",
+              xValueType: "dateTime",
+              yValueFormatString: "$####.00",
+              showInLegend: true,
+              name: "ltc",
+              dataPoints: dataPoints5,
+            },
           ],
-        });
+        }); // finished adjusting the chart body
 
+        // function that enables/ disables some designs.
         function toggleDataSeries(e) {
           if (
             typeof e.dataSeries.visible === "undefined" ||
@@ -63,28 +101,59 @@
           }
           chart.render();
         }
-
+        // Section where starting values are defined.
         var updateInterval = 2000;
         // initial value
-        var yValue1 = 600;
-        var yValue2 = 605;
+        var yValue1;
+        var yValue2;
+        $.getJSON(btcURL, (data) => {
+          yValue1 = data["USD"];
+        });
+        $.getJSON(aaveURL, (data) => {
+          yValue2 = data["USD"];
+        });
+        $.getJSON(ppcURL, (data) => {
+          yValue2 = data["USD"];
+        });
+        $.getJSON(ethURL, (data) => {
+          yValue2 = data["USD"];
+        });
+        $.getJSON(ltcURL, (data) => {
+          yValue2 = data["USD"];
+        });
 
         var time = new Date();
         // starting at 9.30 am
-        time.setHours(9);
-        time.setMinutes(30);
-        time.setSeconds(00);
-        time.setMilliseconds(00);
+        time.setHours(time.getHours());
+        time.setMinutes(time.getMinutes());
+        time.setSeconds(time.getSeconds());
+        time.setMilliseconds(time.getMilliseconds());
 
+        // FUnction that updates chart.
         function updateChart(count) {
           count = count || 1;
-          var deltaY1, deltaY2;
           for (var i = 0; i < count; i++) {
             time.setTime(time.getTime() + updateInterval);
 
             // adding random value and rounding it to two digits.
-            $.getJSON();
 
+            // yValue1 = Math.round((yValue1 + deltaY1) * 100) / 100;
+            $.getJSON(btcURL, (data) => {
+              yValue1 = data["USD"];
+            });
+            // yValue2 = Math.round((yValue2 + deltaY2) * 100) / 100;
+            $.getJSON(aaveURL, (data) => {
+              yValue2 = data["USD"];
+            });
+            $.getJSON(ppcURL, (data) => {
+              yValue3 = data["USD"];
+            });
+            $.getJSON(ethURL, (data) => {
+              yValue4 = data["USD"];
+            });
+            $.getJSON(ltcURL, (data) => {
+              yValue5 = data["USD"];
+            });
             // pushing the new values
             dataPoints1.push({
               x: time.getTime(),
@@ -94,11 +163,26 @@
               x: time.getTime(),
               y: yValue2,
             });
+            dataPoints3.push({
+              x: time.getTime(),
+              y: yValue3,
+            });
+            dataPoints4.push({
+              x: time.getTime(),
+              y: yValue4,
+            });
+            dataPoints5.push({
+              x: time.getTime(),
+              y: yValue5,
+            });
           }
 
           // updating legend text with  updated with y Value
-          chart.options.data[0].legendText = " Company A  $" + yValue1;
-          chart.options.data[1].legendText = " Company B  $" + yValue2;
+          chart.options.data[0].legendText = " Bitcoin  $" + yValue1;
+          chart.options.data[1].legendText = " Aave  $" + yValue2;
+          chart.options.data[2].legendText = " PPC  $" + yValue3;
+          chart.options.data[3].legendText = " ETH  $" + yValue4;
+          chart.options.data[4].legendText = " LTC  $" + yValue5;
           chart.render();
         }
         // generates first set of dataPoints
