@@ -6,8 +6,9 @@ const trashIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16
 </svg>`;
   let firstImg = '<div class="first-image" ></div>';
   let aboutPage = `<div class="container-fluid col-xxl-8 px-5 py-5 first-image"><div class="row flex-lg-row-reverse align-items-center g-5 py-5"><div class="col-10 col-sm-8 col-lg-6"><img src="./pictures/passportPic.jpg" class="d-block mx-lg-auto img-fluid border border-dark border-5 rounded-pill" alt="Bootstrap Themes" width="300"height="200"loading="lazy"/></div><div class="col-lg-6 bg-dark p-2 rounded-3 border-3 border-dark"><h1 class="display-5 fw-bold text-white lh-1 mb-3">Yaroslav Yarkevich</h1><p class="lead text-light">Hey there, it's me Yaroslav it's my second project in John Bryce Academy. In this project we pratice AJAX api reponses and else. Work with HTML.</p></div></div></div>`; 
-         
-    const checkDigits = (dataList)=>{
+  let progressBar = `<div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar progress-bar-striped progress-bar-animated" id="progressBar"></div></div>`;     
+  let coinsNotFound = ``
+  const checkDigits = (dataList)=>{
       const filteredArray = [];
       const myReg = new RegExp(/^[a-z]/);
   
@@ -200,3 +201,35 @@ const coinVal = "https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH
 $.getJSON(coinVal, (data)=>{
   console.log(data);
 })
+$('.nav-link:eq(2)').on('click',()=>{
+  $('#coinsContainer').empty();
+  $('#coinsContainer').html(aboutPage);
+})
+$('.nav-link:eq(0)').on('click', ()=>{
+  $('#coinsContainer').empty();
+  $('#coinsContainer').html(loadCoinList());
+})
+
+const searchForCoin = (currentID)=>{
+  $('#coinsContainer').empty();
+  $('#coinsContainer').append(progressBar);
+
+  let myCoinsList = JSON.parse(localStorage.getItem("coinList"));
+  myCoinsList = checkDigits(myCoinsList);
+  let searchResult = [];
+    for(let counter = 0; counter < myCoinsList.length; counter++){
+      if(myCoinsList[counter].id.includes(currentID)){
+        searchResult.push(myCoinsList[counter]);       
+      }
+    }
+    $('#coinsContainer').empty();
+    if(searchResult.length > 0){
+      for(let index = 0; index < searchResult.length; index++){
+        createCard(searchResult[index]);
+      }  
+    }else{
+      $('#coinsContainer').append(`<div class="card bg-dark text-danger border border-danger"><div class="card-body">No coins found.</div></div>`)
+      return;
+    }
+       
+}

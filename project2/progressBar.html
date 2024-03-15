@@ -4,35 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
       window.onload = function () {
-        const aaveURL =
-          "https://min-api.cryptocompare.com/data/price?fsym=aave&tsyms=USD";
-        const btcURL =
-          "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD";
-        const ppcURL =
-          "https://min-api.cryptocompare.com/data/price?fsym=ppc&tsyms=USD";
-        const ethURL =
-          "https://min-api.cryptocompare.com/data/price?fsym=eth&tsyms=USD";
-        const ltcURL =
-          "https://min-api.cryptocompare.com/data/price?fsym=ltc&tsyms=USD";
-        var dataPoints1 = [];
-        var dataPoints2 = [];
-        var dataPoints3 = [];
-        var dataPoints4 = [];
-        var dataPoints5 = [];
-        // creates chart object
-        var chart = new CanvasJS.Chart("chartContainer", {
-          zoomEnabled: true,
+        let coinList = ['btc', 'eth'];
+        for (let index = 0; index < coinList.length; index++) {
+          coinList[index] = coinList[index].toUpperCase();
+        }
+        console.log(coinList.join(","));
+        var myURL =
+          "https://min-api.cryptocompare.com/data/pricemulti?fsyms=" +
+          coinList.join(",") +
+          "&tsyms=USD";
+
+        var options = {
           title: {
-            text: "Coin value in dollars",
+            text: "Coin value at the time",
           },
           axisX: {
             title: "chart updates every 2 secs",
           },
           axisY: {
-            prefix: "$",
+            suffix: "$",
           },
           toolTip: {
             shared: true,
@@ -44,52 +36,26 @@
             fontColor: "dimGrey",
             itemclick: toggleDataSeries,
           },
-          data: [
-            {
-              type: "line",
-              xValueType: "dateTime",
-              yValueFormatString: "$####.00",
-              xValueFormatString: "hh:mm:ss TT",
-              showInLegend: true,
-              name: "Bitcon",
-              dataPoints: dataPoints1,
-            },
-            {
-              type: "line",
-              xValueType: "dateTime",
-              yValueFormatString: "$####.00",
-              showInLegend: true,
-              name: "aave",
-              dataPoints: dataPoints2,
-            },
-            {
-              type: "line",
-              xValueType: "dateTime",
-              yValueFormatString: "$####.00",
-              showInLegend: true,
-              name: "ppc",
-              dataPoints: dataPoints3,
-            },
-            {
-              type: "line",
-              xValueType: "dateTime",
-              yValueFormatString: "$####.00",
-              showInLegend: true,
-              name: "etherium",
-              dataPoints: dataPoints4,
-            },
-            {
-              type: "line",
-              xValueType: "dateTime",
-              yValueFormatString: "$####.00",
-              showInLegend: true,
-              name: "ltc",
-              dataPoints: dataPoints5,
-            },
-          ],
-        }); // finished adjusting the chart body
+          data: [],
+        };
 
-        // function that enables/ disables some designs.
+        const updateOptions = (coinList) => {
+          for (let index = 0; index < coinList.length; index++) {
+            var dataObject = {};
+            dataObject.type = "line";
+            dataObject.xValueType = "dateTime";
+            dataObject.yValueFormatString = "###.00$";
+            dataObject.xValueFormatString = "hh:mm:ss TT";
+            dataObject.showInLegend = true;
+            dataObject.name = coinList[index];
+            dataObject.dataPoints = [];
+            options.data.push(dataObject);
+          }
+          console.log(options.data);
+        };
+        updateOptions(coinList);
+        var chart = $("#chartContainer").CanvasJSChart(options);
+
         function toggleDataSeries(e) {
           if (
             typeof e.dataSeries.visible === "undefined" ||
@@ -99,103 +65,66 @@
           } else {
             e.dataSeries.visible = true;
           }
-          chart.render();
+          e.chart.render();
         }
-        // Section where starting values are defined.
+
         var updateInterval = 2000;
         // initial value
-        var yValue1;
-        var yValue2;
-        $.getJSON(btcURL, (data) => {
-          yValue1 = data["USD"];
-        });
-        $.getJSON(aaveURL, (data) => {
-          yValue2 = data["USD"];
-        });
-        $.getJSON(ppcURL, (data) => {
-          yValue2 = data["USD"];
-        });
-        $.getJSON(ethURL, (data) => {
-          yValue2 = data["USD"];
-        });
-        $.getJSON(ltcURL, (data) => {
-          yValue2 = data["USD"];
-        });
+        var yValue1 = 800;
 
         var time = new Date();
-        // starting at 9.30 am
+        // starting at 10.00 am
         time.setHours(time.getHours());
         time.setMinutes(time.getMinutes());
         time.setSeconds(time.getSeconds());
         time.setMilliseconds(time.getMilliseconds());
 
-        // FUnction that updates chart.
-        function updateChart(count) {
-          count = count || 1;
-          for (var i = 0; i < count; i++) {
-            time.setTime(time.getTime() + updateInterval);
+        function updateChart() {
+          time.setTime(time.getTime() + updateInterval);
+          $.getJSON(myURL, (data) => {
+            let xValue = time.getTime();
+            // console.log(data["BTC"]);
+            for (let index = 0; index < coinList.length; index++) {
+              let dataPerCoin = {};
+          let yValue = 0;
+          if(data.Response == "Error"){
+            yValue = 0
+          }else{
+          yValue = data[coinList[index]].USD;}
+          // console.log(coinList[index]);
+          dataPerCoin.x = xValue;
+          dataPerCoin.y = yValue;
+          options.data[index].dataPoints.push(dataPerCoin);
+          options.data[index].legendText =
+            `${coinList[index]} : ` + yValue + "$";
+        
+            }
+          });
 
-            // adding random value and rounding it to two digits.
+          // adding random value and rounding it to two digits.
 
-            // yValue1 = Math.round((yValue1 + deltaY1) * 100) / 100;
-            $.getJSON(btcURL, (data) => {
-              yValue1 = data["USD"];
-            });
-            // yValue2 = Math.round((yValue2 + deltaY2) * 100) / 100;
-            $.getJSON(aaveURL, (data) => {
-              yValue2 = data["USD"];
-            });
-            $.getJSON(ppcURL, (data) => {
-              yValue3 = data["USD"];
-            });
-            $.getJSON(ethURL, (data) => {
-              yValue4 = data["USD"];
-            });
-            $.getJSON(ltcURL, (data) => {
-              yValue5 = data["USD"];
-            });
-            // pushing the new values
-            dataPoints1.push({
-              x: time.getTime(),
-              y: yValue1,
-            });
-            dataPoints2.push({
-              x: time.getTime(),
-              y: yValue2,
-            });
-            dataPoints3.push({
-              x: time.getTime(),
-              y: yValue3,
-            });
-            dataPoints4.push({
-              x: time.getTime(),
-              y: yValue4,
-            });
-            dataPoints5.push({
-              x: time.getTime(),
-              y: yValue5,
-            });
-          }
+          // pushing the new values
+          // options.data[0].dataPoints.push({
+          //   x: time.getTime(),
+          //   y: yValue,
+          // });
 
           // updating legend text with  updated with y Value
-          chart.options.data[0].legendText = " Bitcoin  $" + yValue1;
-          chart.options.data[1].legendText = " Aave  $" + yValue2;
-          chart.options.data[2].legendText = " PPC  $" + yValue3;
-          chart.options.data[3].legendText = " ETH  $" + yValue4;
-          chart.options.data[4].legendText = " LTC  $" + yValue5;
-          chart.render();
+          // options.data[0].legendText = "Turbine 1 : " + yValue + "Wh";
+          $("#chartContainer").CanvasJSChart().render();
         }
         // generates first set of dataPoints
-
+        updateChart();
         setInterval(function () {
           updateChart();
         }, updateInterval);
       };
     </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   </head>
   <body>
     <div id="chartContainer" style="height: 300px; width: 100%"></div>
-    <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script src="https://cdn.canvasjs.com/jquery.canvasjs.min.js"></script>
   </body>
 </html>

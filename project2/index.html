@@ -17,9 +17,9 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="./index.js" defer></script>
-    <script src="./someData.js" defer></script>
+    <script src="./Chart.js" defer></script>
   </head>
   <body>
     <header class="d-flex flex-wrap justify-content-center py-3 bg-dark">
@@ -36,7 +36,9 @@
       <ul class="nav nav-pills">
         <li class="nav-item"><a href="#" class="nav-link">Coins</a></li>
         <li class="nav-item">
-          <a href="#" class="nav-link">Real time report</a>
+          <a id="Real-time-report" href="#" class="nav-link"
+            >Real time report</a
+          >
         </li>
         <li class="nav-item"><a href="#" class="nav-link">About</a></li>
       </ul>
@@ -87,10 +89,7 @@
               aria-label="Close"
             ></button>
           </div>
-          <div
-            id="myModalBody"
-            class="modal-body "
-          ></div>
+          <div id="myModalBody" class="modal-body"></div>
           <div class="modal-footer">
             <button
               type="button"
@@ -103,6 +102,8 @@
         </div>
       </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+    <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script src="https://cdn.canvasjs.com/jquery.canvasjs.min.js"></script>
   </body>
 </html>
