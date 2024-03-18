@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta+Vaani:wght@200;300;400;500;600;700;800&display=swap');
+
+.NavBar >*{
+	display: flex;
+    font-family: "Mukta Vaani";
+    padding-left: 50px;
+    padding-right: 50px;
+    justify-content: space-around;
+}
+.links{
+    margin-top: 27px;
+}
+.links > *{
+    padding-left: 20px;
+    
+}
+h1{
+    color: crimson;
+}
