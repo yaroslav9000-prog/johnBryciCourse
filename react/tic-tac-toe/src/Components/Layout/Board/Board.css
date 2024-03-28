@@ -1,0 +1,6 @@
+.Board {
+}
+.row{
+    display: flex;
+    padding: 0;
+}
