@@ -1,0 +1,31 @@
+.Board {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+	gap: .5em;
+	align-self: stretch;
+	margin: .5em;
+}
+.btn{
+	width: 100%;
+	background: none;
+	font-size: larger;
+	border: 3px solid black;
+	cursor: pointer;
+	aspect-ratio: 1/1;
+	padding: .5rem;
+}
+
+.btn.active{
+	background-color:royalblue;
+}
+.btn.inactive{
+	opacity: .3;
+}
+
+.btn:hover:not(:disabled),
+.btn-focus:not(:disabled){
+	background-color: royalblue;
+}
+
+
+

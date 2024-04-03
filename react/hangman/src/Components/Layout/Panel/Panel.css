@@ -1,0 +1,16 @@
+.Panel {
+	display: flex;
+    gap: .5em;
+    
+}
+.underSpace{
+    border-bottom: 3px solid black;
+    width: 50px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+
+}
+.theLetter{
+    padding-top: 20px;    
+}
