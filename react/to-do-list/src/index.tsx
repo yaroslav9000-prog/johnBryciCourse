@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import ToDoList from './Components/toDoList/toDoList';
+import './index.css'; 
+import Main from './Components/Main/Main';
+
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <ToDoList/>
+  <Main/>
 );
 
 // If you want to start measuring performance in your app, pass a function
