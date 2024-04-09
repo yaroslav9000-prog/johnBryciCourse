@@ -1,12 +1,16 @@
 import "./Header.css";
-
-function Header(): JSX.Element {
+type Name = {
+    headerName: string;
+}
+function Header({headerName} : Name): JSX.Element {
     return (
         <div className="Header">
-			<h1>TO DO LIST</h1>
+			<h1>{headerName}</h1>
             <hr />
         </div>
     );
 }
-
+Header.defaultProps = {
+    headerName: "piska"
+}
 export default Header;

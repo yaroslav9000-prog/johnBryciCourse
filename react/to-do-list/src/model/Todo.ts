@@ -1,15 +1,19 @@
 export class Todo{
-
+    private id : number;
     private text: String;
-    private done : boolean;
+    public done : boolean;
     private date : String;
-    constructor(text: String, date: String, done: boolean){
+    constructor(id: number, text: String, date: String, done: boolean){
+        this.id = id;
         this.text = text;
         this.done = done;
         this.date = date;
     }
 
-    
+    get getID(){
+        return this.id;
+    }
+
     get getTEXT(){
         return this.text;
     }
@@ -19,8 +23,8 @@ export class Todo{
     get getDate(){
         return this.date;
     }
-    set setDONE(value: String){
-        this.done =  !this.done; 
+    set setID(value: number){
+        this.id = value;
     }
     set setDate(value: String){
         this.date = value;

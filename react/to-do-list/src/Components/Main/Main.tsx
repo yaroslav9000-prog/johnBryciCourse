@@ -3,32 +3,45 @@ import { Todo } from "../../model/Todo";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Content from "../Content/Content";
-import { useEffect, useState } from "react";
-function Main(): JSX.Element {
-    const storedTodos = JSON.parse(localStorage.getItem('todos') || '');
+import { SyntheticEvent, useEffect, useState } from "react";
+import { useLocalStorage } from "../../customHook/useLocalStorage";
+import AddTask from "../AddTask/AddTask";
 
-    const [currentList, setCurrentList] = useState<Todo[]>(storedTodos);
-    
-    
-    const handleListUpdate =(someObject: Todo)=>{
-        setCurrentList([...currentList, someObject]);
-    
+function Main(): JSX.Element {
+    const {setItem, getItem} = useLocalStorage("currentTodos");
+
+    const [currentTodos, setCurrentTodos] = useState<Todo[]>([
+        new Todo(0, "Walk Rikki", "21-8-2024", false),
+        new Todo(1, "Make my Bed", "9-4-2024", false),
+        new Todo(2, "Go to work", "8-4-2024", false)
+    ]);
+    const [newTask, setNewTask] = useState("");
+    const [newDate, setNewDate] = useState("");
+    const handleListUpdate =(someTodos: Todo[])=>{
+        setCurrentTodos(someTodos);
+        
     }
     
     useEffect(()=>{
-        localStorage.setItem('todos', JSON.stringify(currentList));
-    },[currentList])
+        console.log(currentTodos);
+    })
+
+    const handleSubmit = (event: any) =>{
+        preventDe
+        console.log(event);
+    }
 
     return (
         <div className="Main">
 			<header>
-                <Header/>
+                <Header headerName="Some task list"/>
             </header>
+            <AddTask newTask={newTask} Submit={handleSubmit} SetNewTask={setNewTask} newDate={newDate} setNewDate={setNewDate}/>
             <main>
-                <Content updateContent={handleListUpdate} myList={currentList}/>
+                <Content updateContent={handleListUpdate} myList={currentTodos}/>
             </main>
             <footer>
-                <Footer/>
+                <Footer tasks={currentTodos.length}/>
             </footer>
         </div>
     );

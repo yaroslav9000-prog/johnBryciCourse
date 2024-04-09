@@ -2,9 +2,14 @@ import "./Content.css";
 import { Todo } from "../../model/Todo";
 import { ChangeEvent, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import Checkbox from '@mui/material/Checkbox';
+import Card from '@mui/material/Card';
+import TaskItem from "../TaskItem/TaskItem";
+import Button from '@mui/material/Button';
+import AddTask from "../AddTask/AddTask";
 type TodoList ={
     myList : Todo[]; 
-    updateContent: (someObject: Todo)=>void;
+    updateContent: (someObject: Todo[])=>void;
 };
 type FormFields = {
     taskName : string;
@@ -13,23 +18,29 @@ type FormFields = {
 function Content({myList, updateContent}: TodoList): JSX.Element {
     const {register, handleSubmit} = useForm<FormFields>();
     
-
-    const onSubmit:SubmitHandler<FormFields> = (data) =>{
-        console.log('Form submitted', data);
-        updateContent(new Todo(data.taskName, data.taskDate, false));
+    // const deleteTodos = (e: number)=>{
+    //     const newTodos = myList.filter(todo=> todo.getID!==e );
+    //     updateContent([...newTodos]);
+    // }
+    const handleCheck = (id: number)=>{
+        myList.map(todo =>(id === todo.getID? todo.done = !todo.getDONE: todo))
+        updateContent([...myList]);
+    }
+    const handleDelete = (id: number) =>{
+        const result = myList.filter(todo=>todo.getID!==id);
+        updateContent(result);
     }
 
     return (
+        
         <div className="Content">
-			<h1>Some Content</h1>
-            <form onSubmit={handleSubmit(onSubmit)}>
-            <input {...register("taskName")} id="taskName" type="text" />
-            <input {...register("taskDate")} id="taskDate" type="date" />
-            <input type="submit" value={"submit"}/>
-            </form>
-            {myList.map((item, index)=>(<div key={index} className="Task"><span className="taskName">{item.getTEXT}</span><span className="taskDate">{item.getDate}</span></div>))}
+                      
+            {myList.length?(
+                myList.map((todo, index) =>(<TaskItem index={index} task={todo} handleCheck={()=>{handleCheck(todo.getID)}} handleDelete={()=>{handleDelete(todo.getID)}}/>))
+            ):(<h3 style={{fontFamily: "Lobster", fontSize:"large"}}>Your List is empty</h3>)
+        }
         </div>
     );
 }
-
+//<input type="checkbox" onChange={()=>handleCheck(todo.getID)} checked={todo.getDONE}/>
 export default Content;

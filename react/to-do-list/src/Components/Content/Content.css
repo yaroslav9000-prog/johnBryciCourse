@@ -1,3 +1,17 @@
-.Content {
-	
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+/* .task{
+    height: 5rem;
+    width: 20rem;
+    display: flex;
+    border: 1px solid grey;
+    border-radius: 20px;
+    justify-content: space-around;
+    background-color: cornsilk;
+    font-family: Lobster;
+    
+} */
+.textSpan, .dateSpan{
+    margin-bottom: auto;
+    margin-top: auto;
 }
