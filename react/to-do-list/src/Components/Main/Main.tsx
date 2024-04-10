@@ -5,36 +5,38 @@ import Footer from "../Footer/Footer";
 import Content from "../Content/Content";
 import { SyntheticEvent, useEffect, useState } from "react";
 import { useLocalStorage } from "../../customHook/useLocalStorage";
+import useForm from "react-hook-form";
 import AddTask from "../AddTask/AddTask";
 
 function Main(): JSX.Element {
-    const {setItem, getItem} = useLocalStorage("currentTodos");
+    const someShit = JSON.parse(localStorage.getItem('shoppingList') || "{}");
+    console.log(someShit);
 
-    const [currentTodos, setCurrentTodos] = useState<Todo[]>([
-        new Todo(0, "Walk Rikki", "21-8-2024", false),
-        new Todo(1, "Make my Bed", "9-4-2024", false),
-        new Todo(2, "Go to work", "8-4-2024", false)
-    ]);
+    const [currentTodos, setCurrentTodos] = useState<Todo[]>(someShit);
     const [newTask, setNewTask] = useState("");
     const [newDate, setNewDate] = useState("");
     const handleListUpdate =(someTodos: Todo[])=>{
-        setCurrentTodos(someTodos);
         
+        localStorage.setItem('shoppingList', JSON.stringify(someTodos)); 
+        setCurrentTodos(someTodos);       
     }
     
+
+
     useEffect(()=>{
         console.log(currentTodos);
     })
 
-    const handleSubmit = (event: any) =>{
-        preventDe
-        console.log(event);
+    const handleSubmit = (event: string, eventDate: string) =>{
+       const newTodo = new Todo(currentTodos.length, event, eventDate, false);
+       const newList = [...currentTodos, newTodo];
+       handleListUpdate(newList);
     }
 
     return (
         <div className="Main">
 			<header>
-                <Header headerName="Some task list"/>
+                <Header headerName="Grocery List"/>
             </header>
             <AddTask newTask={newTask} Submit={handleSubmit} SetNewTask={setNewTask} newDate={newDate} setNewDate={setNewDate}/>
             <main>

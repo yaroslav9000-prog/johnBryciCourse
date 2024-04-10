@@ -28,7 +28,12 @@ function Content({myList, updateContent}: TodoList): JSX.Element {
     }
     const handleDelete = (id: number) =>{
         const result = myList.filter(todo=>todo.getID!==id);
-        updateContent(result);
+        //i need to refactor ids of list items
+        const refResult = result.map((item, index)=> {
+            item.setID = index;
+            return item;
+        })
+        updateContent([...result]);
     }
 
     return (

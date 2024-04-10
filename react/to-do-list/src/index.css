@@ -25,7 +25,8 @@ code {
 .Content{
   position: relative;
   display: flex;
-  justify-content: space-evenly; 
+  justify-content: space-evenly;
+  max-width: 100%; 
 }
 .Task{
   min-width: 200px;
