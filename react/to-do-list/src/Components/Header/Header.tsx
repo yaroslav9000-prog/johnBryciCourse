@@ -4,9 +4,9 @@ type Name = {
 }
 function Header({headerName} : Name): JSX.Element {
     return (
-        <div className="Header">
-			<h1>{headerName}</h1>
-            <hr />
+        <div className="Header" style={{display: "flex", justifyContent: "start", borderBottom: "black solid 1px"}}>
+			<h1 style={{paddingLeft: "1rem"}}>{headerName}</h1>
+
         </div>
     );
 }

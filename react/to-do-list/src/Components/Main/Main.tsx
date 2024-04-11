@@ -7,24 +7,28 @@ import { SyntheticEvent, useEffect, useState } from "react";
 import { useLocalStorage } from "../../customHook/useLocalStorage";
 import useForm from "react-hook-form";
 import AddTask from "../AddTask/AddTask";
-
+import SearchBar from "../SearchBar/SearchBar";
 function Main(): JSX.Element {
-    const someShit = JSON.parse(localStorage.getItem('shoppingList') || "{}");
-    console.log(someShit);
+    const someShit = JSON.parse(localStorage.getItem('shoppingList') || '');
 
-    const [currentTodos, setCurrentTodos] = useState<Todo[]>(someShit);
+    const newTodoList = [];
+    for(let index = 0; index < someShit.length; index++){
+        newTodoList.push(new Todo(someShit[index].id, someShit[index].text, someShit[index].date, someShit[index].done));
+    }
+
+    const [currentTodos, setCurrentTodos] = useState(newTodoList);
     const [newTask, setNewTask] = useState("");
     const [newDate, setNewDate] = useState("");
+    const [search, setSearch] = useState("");
     const handleListUpdate =(someTodos: Todo[])=>{
-        
-        localStorage.setItem('shoppingList', JSON.stringify(someTodos)); 
-        setCurrentTodos(someTodos);       
+        setCurrentTodos(someTodos);
+               
     }
     
 
 
     useEffect(()=>{
-        console.log(currentTodos);
+        localStorage.setItem('shoppingList', JSON.stringify(currentTodos)); 
     })
 
     const handleSubmit = (event: string, eventDate: string) =>{
@@ -38,6 +42,7 @@ function Main(): JSX.Element {
 			<header>
                 <Header headerName="Grocery List"/>
             </header>
+            <SearchBar search={search} setSearch={setSearch}/>
             <AddTask newTask={newTask} Submit={handleSubmit} SetNewTask={setNewTask} newDate={newDate} setNewDate={setNewDate}/>
             <main>
                 <Content updateContent={handleListUpdate} myList={currentTodos}/>

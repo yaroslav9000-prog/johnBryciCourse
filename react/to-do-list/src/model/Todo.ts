@@ -1,8 +1,8 @@
 export class Todo{
     private id : number;
     private text: String;
-    public done : boolean;
     private date : String;
+    public done : boolean;
     constructor(id: number, text: String, date: String, done: boolean){
         this.id = id;
         this.text = text;
