@@ -1,0 +1,2 @@
+20240416	13:58:43	8edc1784-a98c-46bf-9b68-9fd5f4eecb84	Error: Not allowed by CORS
+20240416	13:58:43	ac84233b-b97b-4dbc-b5c3-8f5bde05ca70	Error: Not allowed by CORS
