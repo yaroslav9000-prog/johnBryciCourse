@@ -1,0 +1,15 @@
+.MainLayout {
+    text-align: center;
+    display: grid;
+    height: 100vh;
+    grid-template-rows: 15% 75% 10%;
+  }
+  header{
+    position: sticky;
+    width: 100%;
+    background-color: orange;
+  }
+  footer{
+    position: sticky;
+    background-color: orangered;
+  }

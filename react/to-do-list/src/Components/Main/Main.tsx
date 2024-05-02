@@ -26,7 +26,6 @@ function Main(): JSX.Element {
     }
     
 
-
     useEffect(()=>{
         localStorage.setItem('shoppingList', JSON.stringify(currentTodos)); 
     })
@@ -45,7 +44,7 @@ function Main(): JSX.Element {
             <SearchBar search={search} setSearch={setSearch}/>
             <AddTask newTask={newTask} Submit={handleSubmit} SetNewTask={setNewTask} newDate={newDate} setNewDate={setNewDate}/>
             <main>
-                <Content updateContent={handleListUpdate} myList={currentTodos}/>
+                <Content updateContent={handleListUpdate} myList={currentTodos.filter(item => (item.getTEXT.includes(search.toLowerCase())))}/>
             </main>
             <footer>
                 <Footer tasks={currentTodos.length}/>

@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300..700&display=swap');
+.Header {
+	display: flex;
+    justify-content: space-around;
+}
+h1{
+    font-family: "Spline Sans";
+}
+ul{
+    list-style: none;
+    display: inline-flex;
+}
+li{
+    margin-right: 1em;
+    margin-top: 18px;
+}

@@ -9,7 +9,8 @@ type SearchGavno = {
 function SearchBar({search, setSearch}: SearchGavno): JSX.Element {
     return (
         <div className="SearchBar">
-			<TextField id="search" onChange={(e)=>{setSearch(e.target.value)}} value={search} placeholder="Search Todos" style={{height: '50px', padding:'1em'}}/><Button style={{marginTop: "1.5rem"}}>Search</Button>
+			<TextField id="search" onChange={(e)=>{setSearch(e.target.value)}} value={search} placeholder="Search Todos" style={{height: '50px', padding:'1em'}}/>
+            <Button style={{marginTop: "1.5rem"}}>Search</Button>
         </div>
     );
 }
