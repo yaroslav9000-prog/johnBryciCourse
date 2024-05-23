@@ -26,18 +26,27 @@ function Content({myList, updateContent}: TodoList): JSX.Element {
         myList.map(todo =>(id === todo.getID? todo.done = !todo.getDONE: todo))
         updateContent([...myList]);
     }
-    const handleDelete = (id: number) =>{
+    const handleDelete = async (id: number) =>{
         const result = myList.filter(todo=>todo.getID!==id);
         //i need to refactor ids of list items
         const refResult = result.map((item, index)=> {
             item.setID = index;
             return item;
         })
-        updateContent([...result]);
+        // updateContent([...refResult]);
+        const deleteOptions: RequestInit = {
+            method: "DELETE",
+            mode: "cors",
+            headers:{
+                "Content-type": "application/json"
+            }
+        }
+        const reqURL = `http://localhost:3500/tasks/${id}`;
+        const finalResult = await fetch(reqURL, deleteOptions);
+        updateContent(refResult); 
     }
 
     return (
-        
         <div className="Content">
                       
             {myList.length?(

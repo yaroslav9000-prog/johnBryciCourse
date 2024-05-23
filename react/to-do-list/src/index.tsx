@@ -7,6 +7,7 @@ import Main from './Components/Main/Main';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+//npx json-server -p 3500 -w data/db.json command to run json server.
 root.render(
   <Main/>
 );

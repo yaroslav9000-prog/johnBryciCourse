@@ -1,0 +1,16 @@
+{
+  "tasks": [
+    {
+      "id": "2",
+      "done": false,
+      "text": "Pizza",
+      "date": "26-06-2024"
+    },
+    {
+      "id": "3",
+      "done": false,
+      "text": "Bread",
+      "date": "27-05-2024"
+    }
+  ]
+}

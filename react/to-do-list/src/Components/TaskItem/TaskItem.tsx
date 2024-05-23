@@ -12,8 +12,8 @@ type TaskItemProps = {
 function TaskItem({handleCheck, handleDelete, task, index}: TaskItemProps): JSX.Element {
     return (
         <div className="TaskItem">
-			<Card className="Task" variant="outlined" key={index}><div className="taskContent"><Checkbox size={"large"}  onChange={()=>handleCheck(task.getID)} checked={task.getDONE}/><span className="textSpan" style={{textDecoration: task.getDONE? "line-through": "none"}}>{task.getTEXT}</span>
-                <span className="dateSpan">{task.getDate}</span><Button variant="contained" color='error' onClick={()=>{handleDelete(task.getID)}}>Delete</Button></div></Card>
+			<Card className="Task" variant="outlined" key={index}><Checkbox size={"large"}  onChange={()=>handleCheck(task.getID)} checked={task.getDONE}/><span className="textSpan" style={{textDecoration: task.getDONE? "line-through": "none"}}>{task.getTEXT}</span>
+                <span className="dateSpan">{task.getDate}</span><Button variant="contained" color='error' onClick={()=>{handleDelete(task.getID)}}>Delete</Button></Card>
         </div>
     );
 }

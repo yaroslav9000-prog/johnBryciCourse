@@ -24,12 +24,15 @@ code {
 }
 .Content{
   position: relative;
-  display: flex;
   justify-content: space-evenly;
   max-width: 100%; 
+  padding-left: auto;
+  padding-right: auto;
 }
 .Task{
-  min-width: 200px;
-  max-width: 345px;
+  min-width: 300px;
+  max-width: 500px;
   font-family: Lobster;
+  display: flex;
+  justify-content:space-evenly;
 }
