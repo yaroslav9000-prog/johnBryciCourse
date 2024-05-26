@@ -5,7 +5,7 @@ const trashIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16
 <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
 </svg>`;
   let firstImg = '<div class="first-image" ></div>';
-  let aboutPage = `<div class="container-fluid col-xxl-8 px-5 py-5 first-image"><div class="row flex-lg-row-reverse align-items-center g-5 py-5"><div class="col-10 col-sm-8 col-lg-6"><img src="./pictures/passportPic.jpg" class="d-block mx-lg-auto img-fluid border border-dark border-5 rounded-pill" alt="Bootstrap Themes" width="300"height="200"loading="lazy"/></div><div class="col-lg-6 bg-dark p-2 rounded-3 border-3 border-dark"><h1 class="display-5 fw-bold text-white lh-1 mb-3">Yaroslav Yarkevich</h1><p class="lead text-light">Hey there, it's me Yaroslav it's my second project in John Bryce Academy. In this project we pratice AJAX api reponses and else. Work with HTML.</p></div></div></div>`; 
+  let aboutPage = `<div class="container-fluid col-xxl-8 px-5 py-5 first-image"><div class="row flex-lg-row-reverse align-items-center g-5 py-5"><div class="col-10 col-sm-8 col-lg-6"><img src="./pictures/passportPic.jpg" class="d-block mx-lg-auto img-fluid border border-dark border-5 rounded-pill" alt="Bootstrap Themes" width="300"height="200"loading="lazy"/></div><div class="col-lg-6 bg-dark p-2 rounded-3 border-3 border-dark"><h1 class="display-5 fw-bold text-white lh-1 mb-3">Yaroslav Yarkevich</h1><p class="lead text-light">Hey there, it's me Yaroslav it's my second project in John Bryce Academy. In this project we practice AJAX api interaction and work with HTML. I got to learn a lot by now.</p></div></div></div>`; 
   let progressBar = `<div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar progress-bar-striped progress-bar-animated" id="progressBar"></div></div>`;     
   let coinsNotFound = ``
   const checkDigits = (dataList)=>{
@@ -27,9 +27,9 @@ const trashIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16
     const cardBody = `<div  class="card col-md-4 col-9 ">
       <div class="card-body">
         <div class="d-flex justify-content-between">
-          <h4 class="card-title">${currentCoin.id}</h4>
+          <h4 class="card-title">${currentCoin.symbol}</h4>
           <label class="switch" >
-            <input id="${currentCoin.id}CheckBox" type="checkbox" onclick="checkList('${currentCoin.id}')"/>
+            <input id="${currentCoin.id}CheckBox" type="checkbox" onclick="checkList('${currentCoin.symbol}')"/>
             <span class="slider round"></span>
           </label>
         </div>
@@ -197,17 +197,20 @@ const buildModal = (currentId, data)=>{
     .then(result => {result.lastUpdated = myDate.getTime(); localStorage.setItem(`${currentId}`, JSON.stringify(result)); buildModal(currentId, result)})    
     .catch(error=> console.log('error: ', error));
     }
+
 const coinVal = "https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH&tsyms=USD";
 $.getJSON(coinVal, (data)=>{
   console.log(data);
 })
-$('.nav-link:eq(2)').on('click',()=>{
+$('.nav-link:eq(2)').on('click',(e)=>{
   $('#coinsContainer').empty();
   $('#coinsContainer').html(aboutPage);
+  console.log(e);
 })
-$('.nav-link:eq(0)').on('click', ()=>{
+$('.nav-link:eq(0)').on('click', (e)=>{
   $('#coinsContainer').empty();
   $('#coinsContainer').html(loadCoinList());
+  console.log(e);
 })
 
 const searchForCoin = (currentID)=>{
@@ -218,7 +221,7 @@ const searchForCoin = (currentID)=>{
   myCoinsList = checkDigits(myCoinsList);
   let searchResult = [];
     for(let counter = 0; counter < myCoinsList.length; counter++){
-      if(myCoinsList[counter].id.includes(currentID)){
+      if(myCoinsList[counter].symbol == currentID){
         searchResult.push(myCoinsList[counter]);       
       }
     }
@@ -233,3 +236,11 @@ const searchForCoin = (currentID)=>{
     }
        
 }
+$('#searchButton').on('click',()=>{
+  searchForCoin($("#searchValue").val());
+})
+$(document).keypress(function(event){
+  if (event.which == 13){
+      $("#searchButton").click();
+  }
+});

@@ -1,54 +1,83 @@
-_id: 2144875
-mispar_rechev: 29196201
-tozeret_cd: 443
+_id: 1460248
+mispar_rechev: 6225433
+tozeret_cd: 416
 sug_degem: P
-tozeret_nm: מ.ג סין
-degem_cd: 19
-degem_nm: W740
-ramat_gimur: NET-UP S
-ramat_eivzur_betihuty: 4
-kvutzat_zihum: null
-shnat_yitzur: 2020
-degem_manoa: TZ204XS1481
-mivchan_acharon_dt: 2023-08-07
-tokef_dt: 2024-07-05
-baalut: פרטי
-misgeret: LSJW74091LZ054417
-tzeva_cd: 80
-tzeva_rechev: שנהב לבן
-zmig_kidmi: 215/50R17
-zmig_ahori: 215/50R17
-sug_delek_nm: חשמל
-horaat_rishum: 200475
-moed_aliya_lakvish: 2020-7
-kinuy_mishari: ZS EV
-rank: 0.0573088
-
-
-_id: 693715
-mispar_rechev: 49358001
-tozeret_cd: 268
-sug_degem: P
-tozeret_nm: אאודי ספרד
-degem_cd: 59
-degem_nm: 8UGAKX
-ramat_gimur: 
+tozeret_nm: קיה סלובקיה
+degem_cd: 85
+degem_nm: PB814B
+ramat_gimur: URBAN
 ramat_eivzur_betihuty: null
 kvutzat_zihum: 15
-shnat_yitzur: 2018
-degem_manoa: CZD
-mivchan_acharon_dt: 2023-07-03
-tokef_dt: 2024-07-01
+shnat_yitzur: 2015
+degem_manoa: G4FD
+mivchan_acharon_dt: 2023-10-10
+tokef_dt: 2024-10-06
 baalut: פרטי
-misgeret: WAUZZZ8U9JR070017
+misgeret: U5YPB814BFL715835
 tzeva_cd: 80
 tzeva_rechev: שנהב לבן
-zmig_kidmi: 235/50R18
-zmig_ahori: 235/50R18
+zmig_kidmi: 215/70R16
+zmig_ahori: 215/70R16
 sug_delek_nm: בנזין
-horaat_rishum: 170211
-moed_aliya_lakvish: 2018-7
-kinuy_mishari: Q3
+horaat_rishum: 150087
+moed_aliya_lakvish: 2015-10
+kinuy_mishari: SPORTAGE
 rank: 0.0573088
+
+
+_id: 1460248
+mispar_rechev: 6225433
+tozeret_cd: 416
+sug_degem: P
+tozeret_nm: קיה סלובקיה
+degem_cd: 85
+degem_nm: PB814B
+ramat_gimur: URBAN
+ramat_eivzur_betihuty: null
+kvutzat_zihum: 15
+shnat_yitzur: 2015
+degem_manoa: G4FD
+mivchan_acharon_dt: 2023-10-10
+tokef_dt: 2024-10-06
+baalut: פרטי
+misgeret: U5YPB814BFL715835
+tzeva_cd: 80
+tzeva_rechev: שנהב לבן
+zmig_kidmi: 215/70R16
+zmig_ahori: 215/70R16
+sug_delek_nm: בנזין
+horaat_rishum: 150087
+moed_aliya_lakvish: 2015-10
+kinuy_mishari: SPORTAGE
+rank: 0.0573088
+
+
+_id: 2943601
+mispar_rechev: 8588274
+tozeret_cd: 885
+sug_degem: P
+tozeret_nm: קיה קוריאה
+degem_cd: 230
+degem_nm: BX5119
+ramat_gimur: EX
+ramat_eivzur_betihuty: null
+kvutzat_zihum: 5
+shnat_yitzur: 2011
+degem_manoa: G3LA
+mivchan_acharon_dt: 2024-01-08
+tokef_dt: 2024-11-05
+baalut: פרטי
+misgeret: KNABX511ACT169716
+tzeva_cd: 33
+tzeva_rechev: תכלת
+zmig_kidmi: 165/60R14
+zmig_ahori: 165/60R14
+sug_delek_nm: בנזין
+horaat_rishum: null
+moed_aliya_lakvish: 2011-11
+kinuy_mishari: PICANTO
+rank: 0.0573088
+
+
 
 

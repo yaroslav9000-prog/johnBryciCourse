@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let num = parseInt(prompt("Enter a number"));
+        let length = 0;
+        let myNumber = num;
+        while(myNumber > 0){
+            myNumber/= 10;
+            myNumber = Math.floor(myNumber);
+            length++;
+        }
+        length--;
+        
+        while(num > 0){
+            let digit = 0;
+            digit = Math.floor(num / Math.pow(10, length));
+            console.log(digit);
+        }
+    </script>
+</body>
+</html>
