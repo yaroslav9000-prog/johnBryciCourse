@@ -1,0 +1,18 @@
+<app-header></app-header>
+<div style="text-align:center">
+  <h1>{{greeting}}</h1>
+  <h2>{{name}}</h2>
+</div>
+<hr>
+<label for="celcius-degree">celcius-degree</label><br>
+<input type="number" id="celcius-degree" (input)="celciusToFaren($event)">
+<div>{{this.Farenheit}}</div>
+<label for="exchange" input="fromSheqel()">exchange</label><br>
+<input type="number" id="exchange" (input)="fromSheqel($event)">
+<div>euro: {{euro}}, us dollar: {{dollar}}, Can dollar: {{canDollar}}</div>
+<label for="cmToInch" >Cm to Inch</label><br>
+<input type="number" id="cmToInch" (input)="cmToInches($event)">
+<div>{{inches}}</div>
+<label for="meterToFoot" >Meter to foot</label><br>
+<input type="number" id="meterToFoot" (input)="meterToFeet($event)">
+<div>{{feet}}</div>
