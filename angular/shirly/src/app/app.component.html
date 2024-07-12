@@ -1,0 +1,4 @@
+<h1>{{title}}</h1><hr/>
+<ul>
+    <li *ngFor="let name of giveRandomArray(); let index" [ngClass]="name == 'boy'? 'blue': name == 'girl'? 'red': 'black' ">{{name}}</li>
+</ul>
