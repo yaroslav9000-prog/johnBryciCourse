@@ -1,0 +1,41 @@
+<form (ngSubmit)="onSubmit()">
+    <div class="input-group">
+        <div class="user-input">
+            <label for="operationType">Operation Type</label><br>
+            <select type="number" id="operationType" name="operationType" [(ngModel)]="operationType">
+                <option value=""></option>
+                <option value="loan">loan</option>
+                <option value="withdraw">withdraw</option>
+                <option value="deposit">deposit</option>
+            </select>
+        </div>
+        <div class="user-input">
+            <label for="accountNum">Choose client's number</label><br>
+            <input type="number" id="accountNum" name="accountNum" [(ngModel)]="accountNum">
+        </div>
+        
+        
+        <div class="user-input">
+            <label for="amount">Sum</label><br>
+            <input type="number" id="amount" name="amount" [(ngModel)]="amount">
+        </div>
+        <div class="user-input">
+            <label for="date">Date of operation</label><br>
+            <input type="date" id="date" name="date" [(ngModel)]="date">
+        </div>
+        @if (operationType == "loan") {
+            
+            
+            <div class="user-input">
+                <label for="paymentAmount">Amount of payments</label><br>
+                <input type="number" id="paymentAmount" name="paymentAmount" [(ngModel)]="paymentAmount">
+            </div>
+            <div class="user-input">
+                <label for="interest">Interest</label><br>
+                <input type="number" id="interest" name="interest" [(ngModel)]="interest">
+            </div>
+            
+        }
+    </div>
+    <input type="submit" value="submit">
+</form>

@@ -1,0 +1,13 @@
+
+    
+    @if(operationObj.operationType.operationType == "loan"){
+        <h3>Operation type: <b>Loan</b></h3>
+        <h5>Sum: {{operationObj.operationType.amount}}</h5>
+        <h5>Amount of payments: {{operationObj.operationType.paymentAmount}}</h5>
+        <h5>Interest: {{operationObj.operationType.interest}}</h5>
+        <h5>Date of operation: {{operationObj.operationType.date}}</h5>
+    }@else{
+        <h3>Operation type: <b>{{operationObj.operationType.operationType}}</b></h3>
+        <h5>Sum: {{operationObj.operationType.amount}}</h5>
+        <h5>Date: {{operationObj.operationType.date}}</h5>
+    }

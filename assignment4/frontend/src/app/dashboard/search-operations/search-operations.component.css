@@ -1,0 +1,7 @@
+.searchOperations{
+    padding: 1em;
+    text-align: center;
+}
+input[type="submit"]{
+    width: 100%;
+}

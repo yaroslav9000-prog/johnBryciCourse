@@ -1,0 +1,13 @@
+.newOperation > *{
+    padding: 1em;
+}
+.newOperation{
+    text-align: center;
+}
+select{
+    width: 100%;
+}
+input[type="submit"]{
+    width: 100%;
+    margin-top: 1rem;    
+}
